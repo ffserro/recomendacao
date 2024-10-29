@@ -13,5 +13,12 @@ st.write('Caixa de teste:')
 
 text = st.text_input('Digite algo para ser gravado:')
 
-with open('./test.txt', 'a') as file:
-    file.write(text)
+results = drive_service.files().list(q="'" + 'folder_id' + "' in parents and mimeType != 'application/vnd.google-apps.folder'").execute()
+
+items = results.get('files', [])
+
+
+
+for item in items:
+
+    st.write(item['name'])
