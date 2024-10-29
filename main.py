@@ -4,7 +4,7 @@ from googleapiclient.discovery import build
 
 from datetime import datetime, timedelta
 
-drive_service = build('drive', 'v3', creds=st.secrets['GOOGLE_API_KEY'])
+drive_service = build('drive', 'v3', credentials=st.secrets['GOOGLE_API_KEY'])
 
 
 st.title('Teste')
