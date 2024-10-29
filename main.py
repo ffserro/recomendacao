@@ -8,5 +8,5 @@ st.write('Caixa de teste:')
 
 text = st.text_input('Digite algo para ser gravado:')
 
-if text:
-    st.write(text)
+with open('./test.txt', 'a+') as file:
+    file.write(text)
