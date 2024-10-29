@@ -5,7 +5,7 @@ from google.oauth2 import service_account
 
 from datetime import datetime, timedelta
 
-creds = service_account.Credentials.from_service_account_file(
+creds = service_account.Credentials.from_service_account_info(
     st.secrets['GOOGLE_API_KEY'],
     scopes=['https://www.googleapis.com/auth/drive']
 )
