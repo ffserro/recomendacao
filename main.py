@@ -8,4 +8,5 @@ st.write('Caixa de teste:')
 
 text = st.text_input('Digite algo para ser gravado:')
 
-print(text)
+if text:
+    st.write(text)
