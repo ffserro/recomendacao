@@ -9,7 +9,19 @@ df = conn.read(worksheet='Página1')
 
 st.dataframe(df)
 
-if st.button('Vote no SO SANDRO'):
-    df.loc[df.nome=='SO SANDRO', 'a'] = df.loc[df.nome=='SO SANDRO', 'a'] + 1
-    df = conn.update(worksheet='Página1', data=df)
-    st.dataframe(df)
+if not start:
+
+    st.title('Página Inicial')
+
+
+start = st.button('Clique para começar')
+
+if start:
+    st.rerun()
+    st.title('Agora sim')
+
+
+# if st.button('Vote no SO SANDRO'):
+#     df.loc[df.nome=='SO SANDRO', 'a'] = df.loc[df.nome=='SO SANDRO', 'a'] + 1
+#     df = conn.update(worksheet='Página1', data=df)
+#     st.dataframe(df)
