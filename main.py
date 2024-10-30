@@ -11,10 +11,3 @@ for row in df.itertuples():
     st.write(f'{row.name} has a {row.pet}')
 
 
-st.title('Teste')
-
-st.write('Caixa de teste:')
-
-text = st.text_input('Digite algo para ser gravado:')
-
-
