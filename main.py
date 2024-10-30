@@ -5,6 +5,6 @@ from datetime import datetime, timedelta
 
 conn = st.connection('gsheets', type=GSheetsConnection)
 
-df = conn.read()
+df = conn.read(worksheet='Página1')
 
 st.write(df)
