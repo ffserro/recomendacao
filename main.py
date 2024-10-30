@@ -17,9 +17,10 @@ if 'stage' not in st.session_state:
 
         st.rerun()
 
-if st.session_state['stage'] == 1:
-    
-    st.title('Agora sim')
+else:
+    if st.session_state['stage'] == 1:
+
+        st.title('Agora sim')
 
 
 # if st.button('Vote no SO SANDRO'):
