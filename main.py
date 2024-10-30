@@ -6,6 +6,7 @@ st.cache_data.clear()
 conn = st.connection('gsheets', type=GSheetsConnection)
 
 df = conn.read(worksheet='Página1')
+nomes = list(df.nome)
 
 if 'stage' not in st.session_state:
 
@@ -23,7 +24,7 @@ else:
 
         st.title('Recomendados com empenho')
 
-        st.session_state.escolhas_a = st.multiselect('Escolha até 12 militares que você recomendaria com empenho:', df.nome, max_selections=12)
+        st.session_state.escolhas_a = st.multiselect('Escolha até 12 militares que você recomendaria com empenho:', nome, max_selections=12)
 
         st.write(st.session_state.escolhas_a)
 
@@ -33,12 +34,12 @@ else:
 
     if st.session_state.stage == 2:
         st.title('Recomendados')
-        st.session_state.escolhas_b = st.multiselect('Escolha até 12 militares que você recomendaria:', [i for i in df.nome if i not in st.session_state.escolhas_a], max_selections=12)
+        st.session_state.escolhas_b = st.multiselect('Escolha até 12 militares que você recomendaria:', [i for i in nome if i not in st.session_state.escolhas_a], max_selections=12)
         st.write(st.session_state.escolhas_b)
 
         if st.button('Prosseguir'):
             st.session_state.stage = 3
-            st.session_state.escolhas_c = [i for i in df.nome if i not in (st.session_state.escolhas_a + st.session_state.escolhas_b)]
+            st.session_state.escolhas_c = [i for i in nome if i not in (st.session_state.escolhas_a + st.session_state.escolhas_b)]
             st.rerun()
     
     if st.session_state.stage == 3:
