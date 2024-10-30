@@ -1,9 +1,9 @@
 import streamlit as st
-from streamlit_gsheets import GSheetsConnection
+# from streamlit_gsheets import GSheetsConnection
 
-from datetime import datetime, timedelta
+# from datetime import datetime, timedelta
 
-conn = st.connection('gsheets', type=GSheetsConnection)
+# conn = st.connection('gsheets', type=GSheetsConnection)
 
 # df = conn.read(worksheet='Página1')
 
@@ -13,7 +13,7 @@ if 'stage' not in st.session_state:
 
     if st.button('Começar'):
         st.session_state['stage'] = 1
-        
+
         st.rerun()
 
 if st.session_state['stage'] == 1:
