@@ -7,8 +7,9 @@ conn = st.connection('gsheets', type=GSheetsConnection)
 
 df = conn.read(worksheet='Página1')
 
+st.dataframe(df)
+
 if st.button('Vote no SO SANDRO'):
     df.loc[df.nome=='SO SANDRO', 'a'] += 1
     conn.update(worksheet='Página1', data=df)
-    df = conn.read(worksheet='Página1')
-    st.rerun()
+    st.dataframe(df)
