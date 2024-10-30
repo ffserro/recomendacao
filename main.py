@@ -5,18 +5,21 @@ from datetime import datetime, timedelta
 
 conn = st.connection('gsheets', type=GSheetsConnection)
 
-df = conn.read(worksheet='Página1')
+# df = conn.read(worksheet='Página1')
 
-st.dataframe(df)
+st.session_state.stage = 0
 
-start = st.button('Clique para começar')
 
-if not start:
+
+if st.session_state.stage == 0:
 
     st.title('Página Inicial')
 
+    if st.button('Começar'):
+        st.session_state.stage = 1
+        st.rerun()
 
-if start:
+if st.session_state.stage == 1:
     st.rerun()
     st.title('Agora sim')
 
