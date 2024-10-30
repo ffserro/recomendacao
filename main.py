@@ -1,15 +1,23 @@
 import streamlit as st
 from streamlit_gsheets import GSheetsConnection
 
+from io import BytesIO
+import base64
+
 if 'stage' not in st.session_state:
 
     st.cache_data.clear()
 
+    file_ = open("logo.png", "rb")
+    contents = file_.read()
+    data_url = base64.b64encode(contents).decode("utf-8")
+    file_.close()
+    st.markdown(f"<img style='display: block; margin-left: auto; margin-right: auto; width:40%;' src='data:image/png;base64,{data_url}' alt='EAMCE' width='500'>", unsafe_allow_html=True)
+    
+    st.markdown("<h1 style='text-align: center;'>VOTAÇÃO DO MILITAR DESTAQUE</h1>", unsafe_allow_html=True)
     st.session_state.conn = st.connection('gsheets', type=GSheetsConnection)
 
     st.session_state.df = st.session_state.conn.read(worksheet='Página1')
-
-    st.title('Votação de Militar Destaque')
 
     st.write('Tome um tempo para recomendar militares que tenham se destacado em suas atribuições')
 
