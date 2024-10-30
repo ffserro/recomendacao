@@ -9,7 +9,10 @@ conn = st.connection('gsheets', type=GSheetsConnection)
 
 st.write(st.session_state)
 
-if 'stage' not in st.session_state:
+if not st.session_state.stage:
+    st.session_stage.stage = 0 
+
+if st.session_state.stage == 0:
 
     st.title('Página Inicial')
 
