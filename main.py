@@ -31,7 +31,8 @@ else:
 
     if st.session_state.stage == 2:
         st.title('Recomendados')
-
+        escolhas_b = st.multiselect('Escolha até 8 militares que você recomendaria com empenho:', [i for i in df.nome if i not in escolhas_a], max_selections=8)
+        st.write(escolhas_b)
 
 
 
