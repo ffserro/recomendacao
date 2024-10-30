@@ -11,6 +11,14 @@ if 'stage' not in st.session_state:
 
     st.title('Votação de Militar Destaque')
 
+    st.write('Tome um tempo para recomendar militares como "Militares Padrão"')
+
+    st.write('A votação funciona em duas etapas:')
+
+    st.write('Na primeira deverão ser escolhidos até 12 militares para que sejam recomendados com empenho')
+
+    st.write('Na segunda deverão ser escolhidos até 12 militares para que sejam apenas recomendados')
+
     if st.button('Começar'):
         st.session_state['stage'] = 1
         st.rerun()
