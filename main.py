@@ -12,12 +12,12 @@ if 'stage' not in st.session_state:
     st.title('Página Inicial')
 
     if st.button('Começar'):
+
         st.session_state['stage'] = 1
 
         st.rerun()
 
 if st.session_state['stage'] == 1:
-    st.rerun()
     st.title('Agora sim')
 
 
