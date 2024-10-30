@@ -7,4 +7,5 @@ conn = st.connection('gsheets', type=GSheetsConnection)
 
 df = conn.read(worksheet='Página1')
 
-st.write(df)
+for i in df.nome:
+    st.write(i)
