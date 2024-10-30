@@ -7,7 +7,7 @@ if 'stage' not in st.session_state:
 
     st.session_state.conn = st.connection('gsheets', type=GSheetsConnection)
 
-    st.session_state.df = conn.read(worksheet='Página1')
+    st.session_state.df = st.session_state.conn.read(worksheet='Página1')
 
     st.title('Página Inicial')
 
