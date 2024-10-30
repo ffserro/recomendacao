@@ -41,7 +41,7 @@ else:
         col_a, col_b, col_c = st.columns(3)
 
         with col_a:
-            st.html('<h2>Recomendados com empenho:</h2>')
+            st.html('<h4>Recomendados com empenho:</h2>')
             for i in st.session_state.escolhas_a:
                 st.write(i)
         with col_b:
