@@ -8,17 +8,17 @@ conn = st.connection('gsheets', type=GSheetsConnection)
 # df = conn.read(worksheet='Página1')
 
 if 'stage' not in st.session_state:
-    st.session_state.stage = 0
+    st.session_state['stage'] = 0
 
-if st.session_state.stage == 0:
+if st.session_state['stage'] == 0:
 
     st.title('Página Inicial')
 
     if st.button('Começar'):
-        st.session_state.stage = 1
+        st.session_state['stage'] = 1
         st.rerun()
 
-if st.session_state.stage == 1:
+if st.session_state['stage'] == 1:
     st.rerun()
     st.title('Agora sim')
 
