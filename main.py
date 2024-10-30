@@ -1,11 +1,9 @@
 import streamlit as st
-# from streamlit_gsheets import GSheetsConnection
+from streamlit_gsheets import GSheetsConnection
 
-# from datetime import datetime, timedelta
+conn = st.connection('gsheets', type=GSheetsConnection)
 
-# conn = st.connection('gsheets', type=GSheetsConnection)
-
-# df = conn.read(worksheet='Página1')
+df = conn.read(worksheet='Página1')
 
 if 'stage' not in st.session_state:
 
@@ -18,9 +16,14 @@ if 'stage' not in st.session_state:
         st.rerun()
 
 else:
+
     if st.session_state['stage'] == 1:
 
-        st.title('Agora sim')
+        st.title('Recomendados com empenho')
+
+        st.multiselect('Escolha os militares que você recomendaria com empenho:', df.nome)
+
+
 
 
 # if st.button('Vote no SO SANDRO'):
