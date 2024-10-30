@@ -5,7 +5,7 @@ if 'stage' not in st.session_state:
 
     st.cache_data.clear()
 
-    conn = st.connection('gsheets', type=GSheetsConnection)
+    st.session_state.conn = st.connection('gsheets', type=GSheetsConnection)
 
     st.session_state.df = conn.read(worksheet='Página1')
 
@@ -46,4 +46,4 @@ else:
         st.session_state.df.loc[st.session_state.df.nome.isin(st.session_state.escolhas_a), 'a'] += 1
         st.session_state.df.loc[st.session_state.df.nome.isin(st.session_state.escolhas_b), 'b'] += 1
         st.session_state.df.loc[st.session_state.df.nome.isin(st.session_state.escolhas_c), 'c'] += 1
-        conn.update(worksheet='Página1', data=st.session_state.df)
+        st.session_state.conn.update(worksheet='Página1', data=st.session_state.df)
