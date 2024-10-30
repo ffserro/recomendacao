@@ -21,7 +21,7 @@ else:
 
         st.title('Recomendados com empenho')
 
-        st.multiselect('Escolha os militares que você recomendaria com empenho:', df.nome)
+        st.multiselect('Escolha até 8 militares que você recomendaria com empenho:', df.nome, max_selections=8)
 
 
 
