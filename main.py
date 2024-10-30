@@ -35,8 +35,35 @@ else:
             st.session_state.stage = 3
             st.session_state.escolhas_c = [i for i in st.session_state.df.nome if i not in (st.session_state.escolhas_a + st.session_state.escolhas_b)]
             st.rerun()
-    
+
     if st.session_state.stage == 3:
+        st.title('Confira os seus votos')
+        st.write('Recomendados com empenho:')
+        for i in st.session_state.escolhas_a:
+            st.write(i)
+        st.write('Recomendados: ')
+        for i in st.session_state.escolhas_b:
+            st.write(i)
+        st.write('Não recomendados: ')
+        for i in st.session_state.escolhas_c:
+            st.write(i)
+        
+        col1, col2 = st.columns(2)
+
+        with col1:
+            if st.button('Quero começar de novo...'):
+                st.session_state.escolhas_a = []
+                st.session_state.escolhas_b = []
+                st.session_state.escolhas_c = []
+                st.session_state.stage = 1
+                st.rerun()
+
+        with col2:
+            if st.button('Pode confirmar!'):
+                st.session_state.stage = 4
+                st.rerun()
+    
+    if st.session_state.stage == 4:
         st.title('Muito obrigado pelo sua participação!')
         st.session_state.df = st.session_state.conn.read(worksheet='Página1')
         st.session_state.df.loc[st.session_state.df.nome.isin(st.session_state.escolhas_a), 'a'] += 1
