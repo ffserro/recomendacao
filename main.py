@@ -13,3 +13,4 @@ if st.button('Vote no SO SANDRO'):
     df.loc[df.nome=='SO SANDRO', 'a'] += 1
     conn.update(worksheet='Página1', data=df)
     st.dataframe(df)
+    st.rerun()
