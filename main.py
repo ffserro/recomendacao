@@ -7,10 +7,8 @@ conn = st.connection('gsheets', type=GSheetsConnection)
 
 # df = conn.read(worksheet='Página1')
 
-try:
-    st.session_state.stage
-except:
-    st.session_state.stage = 0 
+if 'stage' not in st.session_state:
+    st.session_state.stage = 0
 
 if st.session_state.stage == 0:
 
