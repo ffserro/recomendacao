@@ -11,7 +11,7 @@ if 'stage' not in st.session_state:
 
     st.title('Votação de Militar Destaque')
 
-    st.write('Tome um tempo para recomendar militares como "Militares Destaque"')
+    st.write('Tome um tempo para recomendar militares que tenham se destacado em suas atribuições no dia-a-dia da OM')
 
     st.write('A votação funciona em duas etapas:')
 
