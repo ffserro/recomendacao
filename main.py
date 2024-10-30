@@ -38,15 +38,20 @@ else:
 
     if st.session_state.stage == 3:
         st.title('Confira os seus votos')
-        st.write('Recomendados com empenho:')
-        for i in st.session_state.escolhas_a:
-            st.write(i)
-        st.write('Recomendados: ')
-        for i in st.session_state.escolhas_b:
-            st.write(i)
-        st.write('Não recomendados: ')
-        for i in st.session_state.escolhas_c:
-            st.write(i)
+        col_a, col_b, col_c = st.columns(3)
+
+        with col_a:
+            st.write('Recomendados com empenho:')
+            for i in st.session_state.escolhas_a:
+                st.write(i)
+        with col_b:
+            st.write('Recomendados: ')
+            for i in st.session_state.escolhas_b:
+                st.write(i)
+        with col_c:
+            st.write('Não recomendados: ')
+            for i in st.session_state.escolhas_c:
+                st.write(i)
         
         col1, col2 = st.columns(2)
 
