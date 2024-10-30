@@ -7,5 +7,5 @@ conn = st.connection('gsheets', type=GSheetsConnection)
 
 df = conn.read(worksheet='Página1')
 
-for i in df.nome:
-    st.write(i)
+if st.button('Vote no SO SANDRO'):
+    df.loc[df.nome=='SO SANDRO', 'a'] += 1
