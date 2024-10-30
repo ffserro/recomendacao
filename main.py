@@ -45,11 +45,11 @@ else:
             for i in st.session_state.escolhas_a:
                 st.write(i)
         with col_b:
-            st.write('Recomendados: ')
+            st.html('<h4>Recomendados:</h2>')
             for i in st.session_state.escolhas_b:
                 st.write(i)
         with col_c:
-            st.write('Não recomendados: ')
+            st.html('<h4>Não recomendados:</h2>')
             for i in st.session_state.escolhas_c:
                 st.write(i)
         
