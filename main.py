@@ -25,6 +25,13 @@ else:
 
         st.write(escolhas_a)
 
+    if st.button('Prosseguir'):
+        st.session_state.stage = 2
+        st.rerun()
+
+    if st.session_state.stage == 2:
+        st.title('Recomendados')
+
 
 
 
