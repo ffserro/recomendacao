@@ -12,9 +12,7 @@ if 'stage' not in st.session_state:
     st.title('Página Inicial')
 
     if st.button('Começar'):
-
         st.session_state['stage'] = 1
-
         st.rerun()
 
 else:
@@ -25,8 +23,6 @@ else:
 
         st.session_state.escolhas_a = st.multiselect('Escolha até 12 militares que você recomendaria com empenho:', st.session_state.df.nome, max_selections=12)
 
-        st.write(st.session_state.escolhas_a)
-
         if st.button('Prosseguir'):
             st.session_state.stage = 2
             st.rerun()
@@ -34,7 +30,6 @@ else:
     if st.session_state.stage == 2:
         st.title('Recomendados')
         st.session_state.escolhas_b = st.multiselect('Escolha até 12 militares que você recomendaria:', [i for i in st.session_state.df.nome if i not in st.session_state.escolhas_a], max_selections=12)
-        st.write(st.session_state.escolhas_b)
 
         if st.button('Prosseguir'):
             st.session_state.stage = 3
