@@ -9,12 +9,12 @@ df = conn.read(worksheet='Página1')
 
 st.dataframe(df)
 
+start = st.button('Clique para começar')
+
 if not start:
 
     st.title('Página Inicial')
 
-
-start = st.button('Clique para começar')
 
 if start:
     st.rerun()
