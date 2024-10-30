@@ -1,10 +1,14 @@
 import streamlit as st
-
-from googleapiclient.discovery import build
+from streamlit_gsheets import GSheetsConnection
 
 from datetime import datetime, timedelta
 
-drive_service = build('drive', 'v3', developerKey=st.secrets['GOOGLE_API_KEY'])
+conn = st.connection('gsheets', type=GSheetsConnection)
+
+df = conn.read()
+
+for row in df.itertuples():
+    st.write(f'{row.name} has a {row.pet}')
 
 
 st.title('Teste')
@@ -13,10 +17,4 @@ st.write('Caixa de teste:')
 
 text = st.text_input('Digite algo para ser gravado:')
 
-results = drive_service.files().list(q="'" + '1rfMqFfbgX9uWeYPGNTErp2eAoxWY70r8' + "' in parents and mimeType != 'application/vnd.google-apps.folder'").execute()
 
-items = results.get('files', [])
-
-for item in items:
-
-    st.write(item['name'])
