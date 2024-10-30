@@ -9,7 +9,7 @@ if 'stage' not in st.session_state:
 
     st.session_state.df = st.session_state.conn.read(worksheet='Página1')
 
-    st.title('Página Inicial')
+    st.title('Votação de Militar Destaque')
 
     if st.button('Começar'):
         st.session_state['stage'] = 1
