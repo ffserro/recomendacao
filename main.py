@@ -43,6 +43,7 @@ else:
     
     if st.session_state.stage == 3:
         st.title('Muito obrigado pelo sua participação!')
+        st.session_state.df = st.session_state.conn.read(worksheet='Página1')
         st.session_state.df.loc[st.session_state.df.nome.isin(st.session_state.escolhas_a), 'a'] += 1
         st.session_state.df.loc[st.session_state.df.nome.isin(st.session_state.escolhas_b), 'b'] += 1
         st.session_state.df.loc[st.session_state.df.nome.isin(st.session_state.escolhas_c), 'c'] += 1
