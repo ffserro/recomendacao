@@ -25,14 +25,19 @@ else:
 
         st.write(st.session_state.escolhas_a)
 
-    if st.button('Prosseguir'):
-        st.session_state.stage = 2
-        st.rerun()
+        if st.button('Prosseguir'):
+            st.session_state.stage = 2
+            st.rerun()
 
     if st.session_state.stage == 2:
         st.title('Recomendados')
-        st.session_state.escolhas_b = st.multiselect('Escolha até 8 militares que você recomendaria com empenho:', [i for i in df.nome if i not in st.session_state.escolhas_a], max_selections=8)
+        st.session_state.escolhas_b = st.multiselect('Escolha até 8 militares que você recomendaria:', [i for i in df.nome if i not in st.session_state.escolhas_a], max_selections=8)
         st.write(st.session_state.escolhas_b)
+
+        if st.button('Prosseguir'):
+            st.session_state.stage = 3
+            st.rerun()
+    
 
 
 
