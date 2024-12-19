@@ -70,6 +70,12 @@ else:
 
         if st.button('Enviar'):
             st.session_state.stage = 3
+            st.session_state.df = pd.concat([st.session_state.df, pd.DataFrame(
+                {'Data': [dt.now().strftime(format='%d/%m/%Y %H:%M')],	
+                'Nome':[nome],	
+                'Sugestão':[sugestao]}
+            )])
+            st.session_state.conn.update(worksheet='Sugestões', data=st.session_state.df)
             st.rerun()
 
     if st.session_state.stage == 3:
