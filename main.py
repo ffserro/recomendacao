@@ -37,9 +37,9 @@ else:
         st.html('<h1>Solicitar uma compra</h1>')
 
         solicitante = st.text_input('Identificação do solicitante:')
-        setor = st.selectbox(['-', 'NPAMRC', 'NPAORE', 'NPAGUA', 'GPNSSE-01', 'GPNSSE-02', 'GPNSSE-10', 'GPNSSE-30', 'GPNSSE-40', 'GPNSSE-50', 'GPNSSE-60'])
+        setor = st.selectbox('Setor do solicitante:', ['-', 'NPAMRC', 'NPAORE', 'NPAGUA', 'GPNSSE-01', 'GPNSSE-02', 'GPNSSE-10', 'GPNSSE-30', 'GPNSSE-40', 'GPNSSE-50', 'GPNSSE-60'])
         descricao = st.text_area('Descrição da necessidade de aquisição')
-        tipo = st.selectbox(['-', 'Material', 'Serviço', 'Material permanente'])
+        tipo = st.selectbox('Tipo de aquisição', ['-', 'Material', 'Serviço', 'Material permanente'])
         valor = st.text_input('Qual é o valor estimado desta aquisição?')
 
         
