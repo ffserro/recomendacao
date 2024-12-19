@@ -44,25 +44,29 @@ else:
 
         
 
-        if st.button('Prosseguir'):
-            st.session_state.stage = 2
+        if st.button('Enviar'):
+            st.session_state.stage = 3
             st.rerun()
 
     if st.session_state.stage == 2:
 
         st.session_state.df = st.session_state.conn.read(worksheet='Sugestões')
 
-        st.title('Recomendados')
-        st.session_state.escolhas_b = st.multiselect('Escolha até 12 militares que você recomendaria:', [i for i in st.session_state.df.nome if i not in st.session_state.escolhas_a], max_selections=12)
+        st.html('<h1>Fazer uma sugestão</h1>')
 
-        if st.button('Prosseguir'):
+        nome = st.text_input('Digite seu nome caso queira se identificar:')
+        sugestao = st.text_area('Digite a sua sugestão:')
+
+        if st.button('Enviar'):
             st.session_state.stage = 3
-            st.session_state.escolhas_c = [i for i in st.session_state.df.nome if i not in (st.session_state.escolhas_a + st.session_state.escolhas_b)]
             st.rerun()
 
-    # if st.session_state.stage == 3:
-    #     st.title('Confira os seus votos')
-    #     col_a, col_b, col_c = st.columns(3)
+    if st.session_state.stage == 3:
+
+        st.html('<h1>Muito obrigado pela sua contribuição!</h1>')
+
+        st.write('Estamos trabalhando para fazer um grupamento melhor, e você é parte da solução.')
+
 
     #     with col_a:
     #         st.html('<h4>Recomendados com empenho:</h2>')
