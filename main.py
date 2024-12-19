@@ -39,15 +39,15 @@ else:
         st.html('<h1>Solicitar uma compra</h1>')
 
         solicitante = st.text_input('Identificação do solicitante:')
-        setor = st.selectbox('Setor do solicitante:', ['-', 'NPAMRC', 'NPAORE', 'NPAGUA', 'GPNSSE-01', 'GPNSSE-02', 'GPNSSE-10', 'GPNSSE-30', 'GPNSSE-40', 'GPNSSE-50', 'GPNSSE-60'])
+        setor = st.selectbox('Setor do solicitante:', ['', 'NPAMRC', 'NPAORE', 'NPAGUA', 'GPNSSE-01', 'GPNSSE-02', 'GPNSSE-10', 'GPNSSE-30', 'GPNSSE-40', 'GPNSSE-50', 'GPNSSE-60'])
         descricao = st.text_area('Descrição da necessidade de aquisição')
-        tipo = st.selectbox('Tipo de aquisição', ['-', 'Material', 'Serviço', 'Material permanente'])
+        tipo = st.selectbox('Tipo de aquisição', ['', 'Material', 'Serviço', 'Material permanente'])
         valor = st.number_input('Qual é o valor estimado desta aquisição?', format="%0.2f")
 
         st.write(solicitante)
         st.write(setor)
 
-        if st.button('Enviar', disabled=((solicitante!='') and (setor!='-') and (descricao!='') and (tipo!='-'))):
+        if st.button('Enviar', disabled=all[field=='' for field in [solicitante, setor, descricao, tipo]]):
             st.session_state.stage = 3
             st.session_state.df = pd.concat([st.session_state.df, pd.DataFrame(
                 {'Data': [dt.now().strftime(format='%d/%m/%Y %H:%M')],	
