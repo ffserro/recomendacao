@@ -14,7 +14,7 @@ if 'stage' not in st.session_state:
     file_.close()
     st.markdown(f"<img style='display: block; margin-left: auto; margin-right: auto; width:40%;' src='data:image/png;base64,{data_url}' alt='EAMCE' width='500'>", unsafe_allow_html=True)
     
-    st.markdown("<h1 style='text-align: center;'>VOTAÇÃO DO MILITAR DESTAQUE</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center;'>CENTRAL DE DEMANDAS</h1>", unsafe_allow_html=True)
     st.session_state.conn = st.connection('gsheets', type=GSheetsConnection)
 
     st.session_state.df = st.session_state.conn.read(worksheet='Página1')
@@ -27,10 +27,17 @@ if 'stage' not in st.session_state:
 
     st.write('Na segunda deverão ser escolhidos até 12 militares para que sejam apenas recomendados')
 
-    if st.button('Começar'):
-        st.session_state['stage'] = 1
-        st.rerun()
-
+    col_a, col_b = st.columns(2)
+    
+    with col_a:
+        if st.button('Começar'):
+            st.session_state['stage'] = 1
+            st.rerun()
+    
+    with col_b:
+        if st.button('Abrir o coração'):
+            st.session_state['stage'] = 1
+            st.rerun()
 else:
 
     if st.session_state['stage'] == 1:
