@@ -21,16 +21,10 @@ if 'stage' not in st.session_state:
 
     st.write('Tome um tempo para recomendar militares que tenham se destacado em suas atribuições')
 
-    st.write('A votação funciona em duas etapas:')
-
-    st.write('Na primeira deverão ser escolhidos até 12 militares para que sejam recomendados com empenho')
-
-    st.write('Na segunda deverão ser escolhidos até 12 militares para que sejam apenas recomendados')
-
     col_a, col_b = st.columns(2)
-    
+
     with col_a:
-        if st.button('Começar'):
+        if st.button('Solicitar uma compra'):
             st.session_state['stage'] = 1
             st.rerun()
     
