@@ -27,7 +27,7 @@ if 'stage' not in st.session_state:
         st.session_state['stage'] = 1
         st.rerun()
     
-    if columns[3].button('Abrir o coração'):
+    if columns[3].button('Registrar sugestão'):
         st.session_state['stage'] = 2
         st.rerun()
 else:
