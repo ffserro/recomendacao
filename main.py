@@ -10,7 +10,7 @@ if 'stage' not in st.session_state:
 
     st.cache_data.clear()
 
-    file_ = open("logo.jpg", "rb")
+    file_ = open("logo.png", "rb")
     contents = file_.read()
     data_url = base64.b64encode(contents).decode("utf-8")
     file_.close()
