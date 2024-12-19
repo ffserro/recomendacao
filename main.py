@@ -46,7 +46,7 @@ else:
 
         
 
-        if st.button('Enviar'):
+        if st.button('Enviar', disabled=(not all[solicitante, setor, descricao, tipo])):
             st.session_state.stage = 3
             st.session_state.df = pd.concat([st.session_state.df, pd.DataFrame(
                 {'Data': [dt.now().strftime(format='%d/%m/%Y %H:%M')],	
@@ -72,7 +72,7 @@ else:
             st.session_state.stage = 3
             st.session_state.df = pd.concat([st.session_state.df, pd.DataFrame(
                 {'Data': [dt.now().strftime(format='%d/%m/%Y %H:%M')],	
-                'Nome':[nome],	
+                'Nome':[nome if nome != '' else 'Anônimo'],	
                 'Sugestão':[sugestao]}
             )])
             st.session_state.conn.update(worksheet='Sugestões', data=st.session_state.df)
