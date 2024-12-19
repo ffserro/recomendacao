@@ -23,7 +23,7 @@ if 'stage' not in st.session_state:
 
     columns = st.columns([1,1,1,1,1])
 
-    if columns[1].button('Solicitar uma compra'):
+    if columns[1].button('Solicitar aquisição'):
         st.session_state['stage'] = 1
         st.rerun()
     
