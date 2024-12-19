@@ -46,7 +46,7 @@ else:
 
         
 
-        if st.button('Enviar', disabled=(not all[solicitante, setor, descricao, tipo])):
+        if st.button('Enviar', disabled=((solicitante!='') and (setor!='-') and (descricao!='') and (tipo!='-'))):
             st.session_state.stage = 3
             st.session_state.df = pd.concat([st.session_state.df, pd.DataFrame(
                 {'Data': [dt.now().strftime(format='%d/%m/%Y %H:%M')],	
