@@ -28,13 +28,13 @@ if 'stage' not in st.session_state:
         st.rerun()
     
     if columns[3].button('Abrir o coração'):
-        st.session_state['stage'] = 1
+        st.session_state['stage'] = 2
         st.rerun()
 else:
 
     if st.session_state['stage'] == 1:
 
-        st.title('Recomendados com empenho')
+        st.html('<h4>Solicitar uma compra</h4>')
 
         st.session_state.escolhas_a = st.multiselect('Escolha até 12 militares que você recomendaria com empenho:', st.session_state.df.nome, max_selections=12)
 
@@ -51,37 +51,37 @@ else:
             st.session_state.escolhas_c = [i for i in st.session_state.df.nome if i not in (st.session_state.escolhas_a + st.session_state.escolhas_b)]
             st.rerun()
 
-    if st.session_state.stage == 3:
-        st.title('Confira os seus votos')
-        col_a, col_b, col_c = st.columns(3)
+    # if st.session_state.stage == 3:
+    #     st.title('Confira os seus votos')
+    #     col_a, col_b, col_c = st.columns(3)
 
-        with col_a:
-            st.html('<h4>Recomendados com empenho:</h2>')
-            for i in st.session_state.escolhas_a:
-                st.write(i)
-        with col_b:
-            st.html('<h4>Recomendados:</h2>')
-            for i in st.session_state.escolhas_b:
-                st.write(i)
-        with col_c:
-            st.html('<h4>Não recomendados:</h2>')
-            for i in st.session_state.escolhas_c:
-                st.write(i)
+    #     with col_a:
+    #         st.html('<h4>Recomendados com empenho:</h2>')
+    #         for i in st.session_state.escolhas_a:
+    #             st.write(i)
+    #     with col_b:
+    #         st.html('<h4>Recomendados:</h2>')
+    #         for i in st.session_state.escolhas_b:
+    #             st.write(i)
+    #     with col_c:
+    #         st.html('<h4>Não recomendados:</h2>')
+    #         for i in st.session_state.escolhas_c:
+    #             st.write(i)
         
-        col1, col2 = st.columns(2)
+    #     col1, col2 = st.columns(2)
 
-        with col1:
-            if st.button('Quero começar de novo...'):
-                st.session_state.escolhas_a = []
-                st.session_state.escolhas_b = []
-                st.session_state.escolhas_c = []
-                st.session_state.stage = 1
-                st.rerun()
+    #     with col1:
+    #         if st.button('Quero começar de novo...'):
+    #             st.session_state.escolhas_a = []
+    #             st.session_state.escolhas_b = []
+    #             st.session_state.escolhas_c = []
+    #             st.session_state.stage = 1
+    #             st.rerun()
 
-        with col2:
-            if st.button('Pode confirmar!'):
-                st.session_state.stage = 4
-                st.rerun()
+    #     with col2:
+    #         if st.button('Pode confirmar!'):
+    #             st.session_state.stage = 4
+    #             st.rerun()
     
     if st.session_state.stage == 4:
         st.title('Muito obrigado pelo sua participação!')
