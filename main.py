@@ -44,10 +44,7 @@ else:
         tipo = st.selectbox('Tipo de aquisição', ['', 'Material', 'Serviço', 'Material permanente'])
         valor = st.number_input('Qual é o valor estimado desta aquisição?', format="%0.2f")
 
-        st.write(solicitante)
-        st.write(setor)
-
-        if st.button('Enviar', disabled=all([field=='' for field in [solicitante, setor, descricao, tipo]])):
+        if st.button('Enviar', disabled=any([field=='' for field in [solicitante, setor, descricao, tipo]])):
             st.session_state.stage = 3
             st.session_state.df = pd.concat([st.session_state.df, pd.DataFrame(
                 {'Data': [dt.now().strftime(format='%d/%m/%Y %H:%M')],	
