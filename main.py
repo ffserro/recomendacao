@@ -34,9 +34,15 @@ else:
 
         st.session_state.df = st.session_state.conn.read(worksheet='Aquisições')
 
-        st.html('<h4>Solicitar uma compra</h4>')
+        st.html('<h1>Solicitar uma compra</h1>')
 
-        st.session_state.escolhas_a = st.multiselect('Escolha até 12 militares que você recomendaria com empenho:', st.session_state.df.nome, max_selections=12)
+        solicitante = st.text_input('Identificação do solicitante:')
+        setor = st.selectbox(['-', 'NPAMRC', 'NPAORE', 'NPAGUA', 'GPNSSE-01', 'GPNSSE-02', 'GPNSSE-10', 'GPNSSE-30', 'GPNSSE-40', 'GPNSSE-50', 'GPNSSE-60'])
+        descricao = st.text_area('Descrição da necessidade de aquisição')
+        tipo = st.selectbox(['-', 'Material', 'Serviço', 'Material permanente'])
+        valor = st.text_input('Qual é o valor estimado desta aquisição?')
+
+        
 
         if st.button('Prosseguir'):
             st.session_state.stage = 2
