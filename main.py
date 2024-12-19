@@ -17,8 +17,6 @@ if 'stage' not in st.session_state:
     st.markdown("<h1 style='text-align: center;'>CENTRAL DE DEMANDAS</h1>", unsafe_allow_html=True)
     st.session_state.conn = st.connection('gsheets', type=GSheetsConnection)
 
-    st.session_state.df = st.session_state.conn.read(worksheet='Página1')
-
     st.write('Tome um tempo para recomendar militares que tenham se destacado em suas atribuições')
 
     columns = st.columns([1,1,1,1,1])
@@ -34,6 +32,8 @@ else:
 
     if st.session_state['stage'] == 1:
 
+        st.session_state.df = st.session_state.conn.read(worksheet='Aquisições')
+
         st.html('<h4>Solicitar uma compra</h4>')
 
         st.session_state.escolhas_a = st.multiselect('Escolha até 12 militares que você recomendaria com empenho:', st.session_state.df.nome, max_selections=12)
@@ -43,6 +43,9 @@ else:
             st.rerun()
 
     if st.session_state.stage == 2:
+
+        st.session_state.df = st.session_state.conn.read(worksheet='Sugestões')
+
         st.title('Recomendados')
         st.session_state.escolhas_b = st.multiselect('Escolha até 12 militares que você recomendaria:', [i for i in st.session_state.df.nome if i not in st.session_state.escolhas_a], max_selections=12)
 
