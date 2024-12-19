@@ -66,7 +66,7 @@ else:
         nome = st.text_input('Digite seu nome caso queira se identificar:')
         sugestao = st.text_area('Digite a sua sugestão:')
 
-        if st.button('Enviar'):
+        if st.button('Enviar', disabled=(sugestao=='')):
             st.session_state.stage = 3
             st.session_state.df = pd.concat([st.session_state.df, pd.DataFrame(
                 {'Data': [dt.now().strftime(format='%d/%m/%Y %H:%M')],	
