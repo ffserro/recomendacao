@@ -19,7 +19,7 @@ if 'stage' not in st.session_state:
     st.markdown("<h1 style='text-align: center;'>CENTRAL DE DEMANDAS</h1>", unsafe_allow_html=True)
     st.session_state.conn = st.connection('gsheets', type=GSheetsConnection)
 
-    st.write('Tome um tempo para recomendar militares que tenham se destacado em suas atribuições')
+    st.write('Este é um espaço para que você possa solicitar aquisições ou ajustes, visando a melhoria do material e do funcionamento da Organização.')
 
     columns = st.columns([1,1,1,1,1])
 
