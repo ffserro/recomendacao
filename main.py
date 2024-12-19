@@ -21,17 +21,15 @@ if 'stage' not in st.session_state:
 
     st.write('Tome um tempo para recomendar militares que tenham se destacado em suas atribuições')
 
-    col_a, col_b = st.columns(2, horizontal_alignment="center")
+    columns = st.columns([2,1,2,1,2], horizontal_alignment="center")
 
-    with col_a:
-        if st.button('Solicitar uma compra'):
-            st.session_state['stage'] = 1
-            st.rerun()
+    if columns[1].button('Solicitar uma compra'):
+        st.session_state['stage'] = 1
+        st.rerun()
     
-    with col_b:
-        if st.button('Abrir o coração'):
-            st.session_state['stage'] = 1
-            st.rerun()
+    if columns[3].button('Abrir o coração'):
+        st.session_state['stage'] = 1
+        st.rerun()
 else:
 
     if st.session_state['stage'] == 1:
