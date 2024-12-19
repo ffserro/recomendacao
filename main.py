@@ -1,5 +1,7 @@
 import streamlit as st
 from streamlit_gsheets import GSheetsConnection
+import pandas as pd
+from datetime import datetime as dt
 
 from io import BytesIO
 import base64
@@ -46,6 +48,15 @@ else:
 
         if st.button('Enviar'):
             st.session_state.stage = 3
+            st.session_state.df = pd.concat([st.session_state.df, pd.DataFrame(
+                {'Data': [dt.now().strftime(format='%d/%m/%Y %H:%M')],	
+                'Solicitante':[solicitante],	
+                'Setor':[setor],	
+                'Descrição detalhada':[descricao],	
+                'Tipo':[tipo],	
+                'Valor estimado':[valor]}
+            )])
+            st.session_state.conn.update(worksheet='Aquisições', data=st.session_state.df)
             st.rerun()
 
     if st.session_state.stage == 2:
