@@ -21,7 +21,7 @@ if 'stage' not in st.session_state:
 
     st.write('Tome um tempo para recomendar militares que tenham se destacado em suas atribuições')
 
-    columns = st.columns([2,1,2,1,2], horizontal_alignment="center")
+    columns = st.columns([2,1,2,1,2])
 
     if columns[1].button('Solicitar uma compra'):
         st.session_state['stage'] = 1
