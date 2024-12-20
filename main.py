@@ -1,7 +1,10 @@
 import streamlit as st
 from streamlit_gsheets import GSheetsConnection
 import pandas as pd
-from datetime import datetime as dt, timedelta as td
+from datetime import datetime as dt
+from dateutil import tz
+
+tzinfo = tz.gettz('America/Sao_Paulo')
 
 from io import BytesIO
 import base64
@@ -47,7 +50,7 @@ else:
         if st.button('Enviar', disabled=(any([field=='' for field in [solicitante, setor, descricao, tipo]]) or valor==0)):
             st.session_state.stage = 3
             st.session_state.df = pd.concat([st.session_state.df, pd.DataFrame(
-                {'Data': [(dt.now() - td(hours=3)).strftime(format='%d/%m/%Y %H:%M')],	
+                {'Data': [(dt.now(tz=tzinfo)).strftime(format='%d/%m/%Y %H:%M')],	
                 'Solicitante':[solicitante],	
                 'Setor':[setor],	
                 'Descrição detalhada':[descricao],	
@@ -69,7 +72,7 @@ else:
         if st.button('Enviar', disabled=(sugestao=='')):
             st.session_state.stage = 3
             st.session_state.df = pd.concat([st.session_state.df, pd.DataFrame(
-                {'Data': [(dt.now() - td(hours=3)).strftime(format='%d/%m/%Y %H:%M')],	
+                {'Data': [(dt.now(tz=tzinfo)).strftime(format='%d/%m/%Y %H:%M')],	
                 'Nome':[nome if nome != '' else 'Anônimo'],	
                 'Sugestão':[sugestao]}
             )])
